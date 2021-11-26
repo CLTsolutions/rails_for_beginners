@@ -1,4 +1,4 @@
 class MainController < ApplicationController
-    def indexend
+    def index
     end
 end
