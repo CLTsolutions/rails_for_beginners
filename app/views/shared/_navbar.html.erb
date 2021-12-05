@@ -1,0 +1,26 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">Navbar</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+        <%
+=begin%>
+  - link_to is a ruby helper and takes and url we want to point to
+    - can pass in options like class which maps to anchor class it generates
+- content inside anchor => url to link to => other options
+<%
+=end%>
+            <%= link+to "About", about_path, class: "nav-link" =%>
+            <a class="nav-link" href="/about">About</a>
+        </li>
+     </ul>
+    </div>
+  </div>
+</nav>
