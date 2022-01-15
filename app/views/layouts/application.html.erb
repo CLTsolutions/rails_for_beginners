@@ -15,17 +15,9 @@
   </head>
 
   <body>
-  <%
-=begin%>
-  - rendering another view inside layout
-  - called partial because it's not a full template
-  - looks inside app => views => shared => _navbar.html.erb (underscore)
-    - partial must start with underscore (separates this from regular templates)
-<%
-=end%>
-  <%= render partial: "shared/navbar" %>
-  <div class="container">
-    <%= yield %>
+    <%= render partial: "shared/navbar" %>
+    <div class="container">
+      <%= yield %>
     </div>
   </body>
 </html>

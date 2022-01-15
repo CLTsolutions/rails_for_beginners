@@ -21,8 +21,7 @@ Database wrapper.
 
 _Interacting with database records and tables together._
 
-User
-
+- User:
 -  query for records
 -  wrap individual records (validation)
 
@@ -40,3 +39,14 @@ This is what gets sent back to the browser and displayed.
 ## Controllers
 
 Decide how to process a request and define a response (where things go).
+- Homepage, dashboard, etc
+- High level logic of what should happen if things are requested.
+
+
+## High Level Example: Loading User's Twitter Profile
+1. Route says to specific controller, "hey we're looking for @GoRails."
+2. Controller says "Go find @GoRails in the database"
+    - If you find it, render out HTML (view) for their profile.
+    - If don't find, redirect to homepage and give them an error.
+3. Up to controller what gets loaded from DB and how it's rendered out in view.
+    - The controller controls how the request is handled.

@@ -1,5 +1,5 @@
 # Routes
-
+- Defined in config => routes.rb
 ### Endpoint: /about
 
 -  GET /about and point TO a controller (about controller/index action)
