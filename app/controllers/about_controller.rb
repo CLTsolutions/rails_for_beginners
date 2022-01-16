@@ -1,4 +1,4 @@
-# matches file name
+# matches file name (capitalize and remove underscore)
 # inheriting from application controller to get all the functionality from rails
 class AboutController < ApplicationController
     # method index because routes "about#index"
