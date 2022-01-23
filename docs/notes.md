@@ -103,11 +103,12 @@ def create
    # The same as User.new({ email: "test@email.com", password: "password" })
    # this is used to make it dynamic
 end
+
 ```
 
 &nbsp;
 
-### _By itself this not secure and will need to be private_
+### _By itself this is not secure and will need to be private_
 
 ```ruby
 def create
@@ -117,11 +118,13 @@ end
 
 &nbsp;
 
-### `user_params` _specifies what attributes are allowed to be set_
+## Private
+
+### `user_params` _is a private helper method that specifies what attributes are allowed to be set_
 
 ```ruby
 def create
-   @user = User.new(params[:user])
+   @user = User.new(user_params)
 end
 
 private
@@ -133,11 +136,13 @@ end
 
 &nbsp;
 
+## Error messages
+
 ### `render :new` &nbsp; _renders template for new view (app => views => registration => new.html.erb)_
 
 ```ruby
 def create
-   @user = User.new(params[:user])
+   @user = User.new(user_params)
    if @user.save
       redirect_to root_path, notice: 'Successfully created account.'
    else
