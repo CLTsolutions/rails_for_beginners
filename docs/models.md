@@ -1,9 +1,9 @@
 # Model Generator
-- Creating a db table
-    - rails generate model User email:string password_digest:string
+- Used to create a db table
+    - `rails generate model User email:string password_digest:string`
         - User table, email column, and a password column
         - need to make sure passwords are hashed and kept safe
-    - rails db:migrate
+    - `rails db:migrate`
         - to create db table
 - Generates a db migration file
 
@@ -32,3 +32,10 @@
     - adds password and password confirmation to our user
     - virtual attributes not saved to db
         - but when password is submitted, runs through bcrypt and password is hashed
+- validates
+    - `:email`, presence: true checks if email is in db
+        - makes sure you have an email address for users
+        - can also be done in migration
+            -`:email, null: false`
+            - the db enforces (not just Ruby code)
+    - gives a cleaner error message in the console when added in model

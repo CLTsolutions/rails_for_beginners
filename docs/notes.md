@@ -1,5 +1,5 @@
 # Gem File
-_similar to npm_
+_Similar to npm_
 -  Allows you to specify gems and their versions to be used in the app.
    - This is how you can know you're using the right version of rails.
 
@@ -24,26 +24,26 @@ _similar to npm_
 -  link_to is a ruby helper and takes a name and url we want to point to
    -  can pass in options like class which maps to anchor class it generates
    - Format: content inside anchor, URL want to link to, and then other options
-- Add either < prefix >< underscore >path or < prefix >< underscore >url
--  Content inside anchor => url to link_to => other options
+- Add either `<prefix><underscore>path` or `<prefix><underscore>url`
+-  Content inside anchor => url to `link_to` => other options
 
 # Flash Messages
-- Method inherited from ApplicationController
+- Method inherited from `ApplicationController`
    - feature of Rails controllers and views
 - Used like a hash in Ruby
     - give name to key (see main_controller.rb)
-        - ":notice" and ":alert" are stored in flash hash object
+        - `:notice` and `:alert` are stored in flash hash object
 - Assigned in controller but needs to be printed out so user can see them
 - Put them in shared because they're shared across the app
     - Putting them in layout is a single place to keep them
-- .now means it will only display on current req
+- `.now` means it will only display on current req
     - not used often, but also not setting flash arbitrarily anyway
 
 # Debugging
-- .inspect
+- `.inspect`
     - i.e., If you think something should be printing out, but it's not
 
 # .erb Files
-- Do <% %> instead of <%= =%>
+- Do `<% %>` instead of `<%= =%>`
     - no equals means we don't want to print the return value in the html
     - want equals when it's printed out
