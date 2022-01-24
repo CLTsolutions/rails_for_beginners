@@ -87,3 +87,9 @@ end
    1. Session cookies
       -  Encrypted store
    2. Signed cookies
+
+# Logging Out
+
+-  `button_to` is more semantic
+   -  req with Hotwire
+-  `link_to` is how to previously log out
