@@ -93,3 +93,17 @@ end
 -  `button_to` is more semantic
    -  req with Hotwire
 -  `link_to` is how to previously log out
+
+# CurrentAttributes
+- Check out `current.rb` file.
+- Class used in req's which can be used to assign things like:
+   - User
+      - Someone not logged in could be `Current.user = nil`
+      - if logged in, `Current.user` will be their user account
+   - Timezone
+   - Account they're on
+- Keeps everything separated
+- Allows us to define things shared throughout application
+
+# Before Action
+- Before you run any action (like methods in controllers), call set_current_user
