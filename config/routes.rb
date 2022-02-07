@@ -2,6 +2,9 @@
 Rails.application.routes.draw do
   get 'about', to: 'about#index'
 
+  # using edit and update because passwords route is for already signed in user (already has a password)
+  get 'password', to: 'passwords#edit', as: :edit_password
+  patch 'password', to: 'passwords#update'
   # custom helper rails has to do to get in an empty string
   # get "/", to: "main#index"
   get 'sign_up', to: 'registrations#new'
