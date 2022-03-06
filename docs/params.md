@@ -5,11 +5,11 @@ _Refer to registrations_controller.rb_
 -  References everything seen inside the parameters in the logs
 -  Can come from routes in url (can specify username and grab correct user)
 -  If form is submitted, it can grab data from the form and put them into params
--  `params[:user]` gives all params
-   -  can dig into params by using `params[:user]`
-      &nbsp;
+-  `params` gives all params
+   -  Can dig into params hash by using `params[:user]`
+      - Gives all user information (entire object)
 
-### _What comes back from params_
+> _What does `params` return?_
 
 ```ruby
 def create
@@ -18,16 +18,14 @@ def create
    params[:user]
    # Parameters: {"user"=>{"email"=>"test@email.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}
    @user = User.new(params[:user])
-   # Giving hash of params and gives it to User.new
+   # Gets hash of params and gives it to User.new
    # The same as User.new({ email: "test@email.com", password: "password" })
-   # this is used to make it dynamic
+   # This is used to make it dynamic
 end
 
 ```
 
-&nbsp;
-
-### _By itself this is not secure and will need to be private_
+> _Using `params` like below is not secure (see [Private](#private))_
 
 ```ruby
 def create
@@ -35,11 +33,9 @@ def create
 end
 ```
 
-&nbsp;
+## <a name="private">Private</a>
 
-## Private
-
-### `user_params` _is a private helper method that specifies what attributes are allowed to be set_
+> `user_params` _is a private helper method specifing what attributes are allowed to be set_
 
 ```ruby
 def create
@@ -53,11 +49,14 @@ def user_params
 end
 ```
 
-&nbsp;
+> `params.require(:user)` is the same as `params[:user]` except `require` will raise an error if `user` is not found as a key in the hash
+
 
 ## Error messages
 
-### `render :new` &nbsp; _renders template for new view (app => views => registration => new.html.erb)_
+> `render :new`<br/>
+> _If `user` save is unsuccessful, render a template for new view_<br/>
+> _app => views => registration => new.html.erb_
 
 ```ruby
 def create
@@ -68,4 +67,15 @@ def create
       render :new
    end
 end
+```
+
+> `@user.errors.full_messages` will give a list of messages to print out
+```ruby
+  <% if @user.errors.any? %>
+    <div class='alert alert-danger'>
+      <% @user.errors.full_messages.each do |message| %>
+        <div><%= message %></div>
+      <% end %>
+    </div>
+  <% end %>
 ```

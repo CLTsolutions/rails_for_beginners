@@ -1,0 +1,16 @@
+require: rubocop-rspec
+
+AllCops:
+  NewCops: enable
+  Exclude:
+    - "**/spec_helper.rb"
+
+Metrics/BlockLength:
+  Exclude:
+    - 'config/**/*'
+
+Style/Documentation:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false

@@ -64,55 +64,81 @@ _Similar to npm_
 
 # Instance Variables
 
-_See registrations_controller.rb_
+_See `registrations_controller.rb`_
 
-- If instance variable is not used, user will be forgotten when garbage collected
+- If instance variable is not used, `user` will be forgotten when garbage collected
+  - Local variable `user =` will only available inside method
+  - Instance variable `@user` will be visible in views
 
 ```ruby
 def new
    @user = User.new
    # Create new user in variable (creating instance user)
-   # instance variable over regular variable because they're available in views
+   # instance variable over regular variable because it will be available for views to access
 end
 ```
+> `@user` => available in views
 
 # Form With
 
-- Helper
-- `form_with`
-  - Tell it what model to use
-  - It gives us a variable called form
-    - This allows us to print out form text fields
+`form_with` is a helper
   - Looks for url based upon model
-    - Look for url helper inside routes
+    - Look for url helper inside `routes`
+  - Tell it what model to use
+  - It gives us a variable called `form`
+    - This allows us to print out form text fields
 
 # Cookies
 
 - Can access `cookies[:user_id]`
   - But anyone can access and change their user id
-- 2 options
-  1.  Session cookies
-      - Encrypted store
-  2.  Signed cookies
+
+### Have two options:
+1.  Session cookies
+    - Are encrypted store
+2.  Signed cookies
+
+#### Session Cookies
+
+_Signs in user and can be set server side but browsers cannot tamper with_
+
+```ruby
+session[:user_id] = @user.id
+```
+
+_Finding a user if user is not `nil`_
+>
+```ruby
+  @user = User.find_by(id: session[:user_id]) if session[:user_id]
+```
+_Can then print out `@user` in view_
 
 # Logging Out
 
 - `button_to` is more semantic
   - req with Hotwire
-- `link_to` is how to previously log out
+- `link_to` is was previously used to log out
 
-# CurrentAttributes
+# Attributes
 
-- Check out `current.rb` file.
-- Class used in req's which can be used to assign things like:
-  - User
-    - Someone not logged in could be `Current.user = nil`
-    - if logged in, `Current.user` will be their user account
-  - Timezone
-  - Account they're on
+_See `current.rb` file._
+
+- `Current` is a class used in req's which can be used to assign things like:
+
+  > - User
+  >   - Someone not logged in could be `Current.user = nil`
+  >   - if logged in, `Current.user` will be their user account
+  > - Timezone
+  > - Account they're on
 - Keeps everything separated
 - Allows us to define things shared throughout application
 
 # Before Action
+_Before you run any action (like methods in controllers), do xyz_
 
-- Before you run any action (like methods in controllers), call set_current_user
+_See `application_controller`_
+> `before_action` calls set_current_user
+
+- `before_action` looks to see if it renders and sends it right back to browser
+  - Won't run other methods to prevent multiple renders
+  - Can only choose one response to send back
