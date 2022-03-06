@@ -1,3 +1,6 @@
+# Reload
+> `reload!`
+
 # Rollback
 
 ## Dropping Tables
@@ -21,5 +24,18 @@
 -  `User.find` is used when it's known a user exists
    -  Throws an error if there is no user
 -  `User.find_by` does not throw an error when user does not exist.
-   -  Prevents app from crashing in Prod
-      -  Treats no user the same as logged out user
+   -  Prevents app from crashing in Prod 
+      - Treats no user the same as logged out user
+
+# Debugging
+
+> `.inspect`
+- prints out value
+  - i.e., If you think something should be printing out, but it's not
+
+> `.errors.any?`
+- Are there errors?
+
+> `.errors.first`
+- Gives first error
+

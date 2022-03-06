@@ -1,6 +1,7 @@
 # email:string
 # password_digest:string
 #
+# has_secure_password adds:
 # password: string (virtual)
 # password_confirmation:string (virtual)
 
