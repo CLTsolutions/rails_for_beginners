@@ -1,7 +1,8 @@
 class PasswordsController < ApplicationController
-  before_action :require_user_logged_in!
+  before_action :require_user_logged_in! # method defined in parent controller
 
-  def edit; end
+  def edit
+  end
 
   def update
     if Current.user.update(password_params)
@@ -17,3 +18,4 @@ class PasswordsController < ApplicationController
     params.require(:user).permit(:password, :password_confirmation)
   end
 end
+

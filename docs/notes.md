@@ -142,3 +142,19 @@ _See `application_controller`_
 - `before_action` looks to see if it renders and sends it right back to browser
   - Won't run other methods to prevent multiple renders
   - Can only choose one response to send back
+
+# Mailers
+```ruby
+PasswordMailer.with(user: @user).reset.deliver_now if @user.present?
+```
+> Go to password mailer => send reset email => but, there are parameter
+
+`.with` sets up params in the mailer (similar to controller params)
+
+## Delivery
+`.deliver_later`
+- Allows us to send out as a background job so browser request will happen immediately
+
+`.deliver_now`
+- Makes respond in app slower because it has to wait 
+
