@@ -1,6 +1,7 @@
 # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 Rails.application.routes.draw do
-  # GET /about (to points to specific controller)
+  # GET /about (points to a specific controller)
+  # about#index is about controller and index action
   get 'about', to: 'about#index'
 
   # using edit and update because passwords route is for already signed in user (already has a password)

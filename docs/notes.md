@@ -3,7 +3,7 @@
 _Similar to npm_
 
 - Allows you to specify gems and their versions to be used in the app.
-  - This is how you can know you're using the right version of rails.
+  - This is how you can know you're using the right version of rails for the app you're working on.
 
 # Bundler
 
@@ -16,7 +16,7 @@ _Similar to npm_
 
 # Environments
 
-`rails s`
+`rails s` command for server
 
 1. Test
 2. Development
@@ -41,7 +41,9 @@ _Similar to npm_
 
 - Can pass in options like `class` which maps to anchor class it generates
 - Add either `<prefix>_path` or `<prefix>_url`
-  - Found in `rails routes`
+  - Name found in `rails routes`
+  - Named in `routes.rb`
+    > `get 'about-us', to: 'about#index', as: :about`
 
 # Flash Messages
 
@@ -77,16 +79,18 @@ def new
    # instance variable over regular variable because it will be available for views to access
 end
 ```
+
 > `@user` => available in views
 
 # Form With
 
 `form_with` is a helper
-  - Looks for url based upon model
-    - Look for url helper inside `routes`
-  - Tell it what model to use
-  - It gives us a variable called `form`
-    - This allows us to print out form text fields
+
+- Looks for url based upon model
+  - Look for url helper inside `routes`
+- Tell it what model to use
+- It gives us a variable called `form`
+  - This allows us to print out form text fields
 
 # Cookies
 
@@ -94,6 +98,7 @@ end
   - But anyone can access and change their user id
 
 ### Have two options:
+
 1.  Session cookies
     - Are encrypted store
 2.  Signed cookies
@@ -107,10 +112,13 @@ session[:user_id] = @user.id
 ```
 
 _Finding a user if user is not `nil`_
+
 >
+
 ```ruby
   @user = User.find_by(id: session[:user_id]) if session[:user_id]
 ```
+
 _Can then print out `@user` in view_
 
 # Logging Out
@@ -130,13 +138,16 @@ _See `current.rb` file._
   >   - if logged in, `Current.user` will be their user account
   > - Timezone
   > - Account they're on
+
 - Keeps everything separated
 - Allows us to define things shared throughout application
 
 # Before Action
+
 _Before you run any action (like methods in controllers), do xyz_
 
 _See `application_controller`_
+
 > `before_action` calls set_current_user
 
 - `before_action` looks to see if it renders and sends it right back to browser
@@ -144,17 +155,28 @@ _See `application_controller`_
   - Can only choose one response to send back
 
 # Mailers
+
 ```ruby
 PasswordMailer.with(user: @user).reset.deliver_now if @user.present?
 ```
+
 > Go to password mailer => send reset email => but, there are parameter
 
 `.with` sets up params in the mailer (similar to controller params)
 
 ## Delivery
+
 `.deliver_later`
+
 - Allows us to send out as a background job so browser request will happen immediately
 
 `.deliver_now`
-- Makes respond in app slower because it has to wait 
 
+- Makes respond in app slower because it has to wait
+
+# API Keys
+
+`rails credentials:edit --environment=development`
+
+- Rails provides mechanism for storing credentials securely:
+  - Separate one for prod

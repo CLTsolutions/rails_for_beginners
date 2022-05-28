@@ -2,9 +2,9 @@
 
 - Defined in `config` => `routes.rb`
 - Can change actual URL but leave the name the same so Rails Routes command prints out the same
-- `to:` points to specific controller
- 
-  `ruby get "about-us", to: "about#index", as: :about`
+- `root to:` points to specific controller
+
+> `ruby get "about-us", to: "about#index", as: :about`
 
 ## Root Route
 
@@ -36,6 +36,7 @@
 - Defines things like:
   - stylesheets, favicons, js
 - `yield` is replaced with view.
+  - `yield` in `application.html.erb` renders `index.html.erb`
 
 # application.html.erb File
 
